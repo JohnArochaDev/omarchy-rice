@@ -1,55 +1,50 @@
 #!/bin/bash
 
-# This modifies the Hyprland bindings configurstion
-
+# This modifies the Hyprland bindings configuration
 
 # Set variables
 CONFIG_FILE="$HOME/.config/hypr/bindings.conf"
-OLD_TERMINAL_CMD="SUPER, RETURN"
-NEW_TERMINAL_CMD="SUPER, T"
-
 TILING_CONFIG_FILE="$HOME/.local/share/omarchy/default/hypr/bindings/tiling-v2.conf"
+NEW_CLOSE_WINDOW_CMD="bindd = SUPER, W, Close window, killactive,"
 
-NEW_CLOSE_WINDOW_CMD="bindd = SUPER, W, Close window, killactive"
-
-# Check if config file exists
+# Check if config files exist
 if [ ! -f "$CONFIG_FILE" ]; then
-  echo "Error: COnfig file not found at $CONFIG_FILE"
+  echo "Error: Config file not found at $CONFIG_FILE"
   exit 1
 fi
 
-# Replace the binding with sed
+if [ ! -f "$TILING_CONFIG_FILE" ]; then
+  echo "Error: Tiling config file not found at $TILING_CONFIG_FILE"
+  exit 1
+fi
 
-# changes terminal keybind to SUPER + T
+echo "Updating keybindings..."
+echo ""
+
+# Change terminal keybind from SUPER + RETURN to SUPER + T
 sed -i "s/bindd = SUPER, RETURN, Terminal/bindd = SUPER, T, Terminal/" "$CONFIG_FILE"
 
-# changes SUPER + T keybind to empty in omarchy tiling-v2.conf
+# Delete line 8 (old SUPER + T binding) from tiling config
 sed -i '8d' "$TILING_CONFIG_FILE"
 
-# SUPER + W keybind to empty in omarchy tiling-v2.conf
+# Delete line 2 (old SUPER + W binding) from tiling config
 sed -i '2d' "$TILING_CONFIG_FILE"
-# Add new SUPER + W cmd to bindings.conf
-#
 
-# Check if change was made: terminal NEW_TERMINAL_CMD
-if grep -q "s/bindd = SUPER, T, Terminal" "$CONFIG_FILE"; then
-  echo "Successfully changed terminal hotkey to SUPER + T"
+# Check if terminal keybind change was successful
+if grep -q "bindd = SUPER, T, Terminal" "$CONFIG_FILE"; then
+  echo "✓ Successfully changed terminal hotkey to SUPER + T"
 else
-  echo "Warning: Could not find the binding to change"
+  echo "✗ Warning: Could not change terminal binding"
 fi
 
-if grep -q "bindd = SUPER, T, Toggle window floating/tiling, toggleFloating," "$CONFIG_FILE"; then
-  echo "Warning: Couldnt find keybinding"
+# Check if old SUPER + W binding still exists
+if grep -q "bindd = SUPER, W, Close window, killactive," "$CONFIG_FILE"; then
+  echo "✓ SUPER + W close window binding already exists"
 else
-  echo "Successfully removed previous T keybinding"
-fi
-
-if grep -q "$NEW_CLOSE_WINDOW_CMD" "$CONFIG_FILE"; then
-  echo "Binding already exists!"
-else
+  # Add new SUPER + W binding to close windows
   echo "$NEW_CLOSE_WINDOW_CMD" >> "$CONFIG_FILE"
-  echo "Successfully changed window close hotkey to SUPER + Q"
+  echo "✓ Successfully added SUPER + W to close windows"
 fi
 
 echo ""
-echo "Done! Press SUPER + SHIFT + R to reload Hyprland Config"
+echo "Done! Press SUPER + SHIFT + R to reload Hyprland config"
