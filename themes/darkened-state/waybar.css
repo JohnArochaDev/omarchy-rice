@@ -39,8 +39,8 @@ window#waybar {
 #tray,
 #custom-notification,
 #idle_inhibitor,
+#bluetooth,
 #custom-updates {
-    background-color: rgba(45, 43, 42, 0.7);
     color: #d7dedc;
 }
 
