@@ -16,7 +16,7 @@ ASCII_DEST="$FASTFETCH_DIR/ascii.txt"
 
 # Create fastfetch directory if it doesn't exist
 if [ ! -d "$FASTFETCH_DIR" ]; then
-    echo "Warning: fastfetch directory not found"
+    echo "✗ Warning: fastfetch directory not found at $FASTFETCH_DIR"
     exit 1
 fi
 
@@ -31,10 +31,15 @@ fi
 
 # Update config file if it exists
 if [ -f "$FASTFETCH_CONFIG" ]; then
-    sed -i 's|"source": "~/.config/omarchy/branding/about.txt"|"source": "~/.config/fastfetch/ascii.txt"|g' "$FASTFETCH_CONFIG" # Ignore the comma needed, it will remain after the operation
+    # Update ASCII source path (keep existing comma)
+    sed -i 's|"source": "~/.config/omarchy/branding/about.txt"|"source": "~/.config/fastfetch/ascii.txt"|g' "$FASTFETCH_CONFIG"
+    
+    # Update color from green to red (first occurrence only)
+    sed -i '0,/"color": { "1": "green" }/{s|"color": { "1": "green" }|"color": { "1": "red" }|}' "$FASTFETCH_CONFIG"
+    
     echo "✓ Updated fastfetch config"
 else
-    echo "⊘ Config file doesn't exist, creating new one..."
+    echo "✗ Config file doesn't exist at $FASTFETCH_CONFIG"
     exit 1
 fi
 
