@@ -31,9 +31,7 @@ PACKAGES_TO_REMOVE=(
     
     # Modern CLI tools (I like old fashioned cmds)
     "bat"           # Better cat with syntax highlighting
-    "eza"           # Better ls with colors/icons
     "fzf"           # Fuzzy finder for interactive search
-    "zoxide"        # Smart cd command
     
     # Terminal emulators (not using, using ghostty)
     "alacritty"
