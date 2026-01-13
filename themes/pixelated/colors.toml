@@ -1,0 +1,25 @@
+[colors]
+# Base colors - main background and text
+background = "#1e1e2e"    # Main background color
+foreground = "#cdd6f4"    # Main text color
+cursor = "#f5e0dc"        # Cursor color
+
+# Terminal colors (normal intensity)
+black = "#45475a"         # Black text
+red = "#f38ba8"           # Red text/errors
+green = "#a6e3a1"         # Green text/success
+yellow = "#f9e2af"        # Yellow text/warnings
+blue = "#89b4fa"          # Blue text/info
+magenta = "#f5c2e7"       # Magenta text
+cyan = "#94e2d5"          # Cyan text
+white = "#bac2de"         # White text
+
+# Terminal colors (bright/bold intensity)
+bright_black = "#585b70"
+bright_red = "#f38ba8"
+bright_green = "#a6e3a1"
+bright_yellow = "#f9e2af"
+bright_blue = "#89b4fa"
+bright_magenta = "#f5c2e7"
+bright_cyan = "#94e2d5"
+bright_white = "#a6adc8"
