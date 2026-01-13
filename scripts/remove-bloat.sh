@@ -10,7 +10,7 @@ PACKAGES_TO_REMOVE=(
     # System info display
     "neofetch"
     
-    # Modern CLI tools, replacements for cat, ls, find, grep, cd. (I like old fashoned cmds)
+    # Modern CLI tools, replacements for cat, ls, find, grep, cd. (I like old fashioned cmds)
     "bat"           # Better cat with syntax highlighting
     "eza"           # Better ls with colors/icons
     "fd"            # Better find command
@@ -38,8 +38,17 @@ PACKAGES_TO_REMOVE=(
     "fcitx5-gtk"
     "fcitx5-qt"
     
+    # Printing stack (never print)
+    "cups"
+    "cups-browsed"
+    "cups-filters"
+    "cups-pdf"
+    "system-config-printer"
+    
     # Misc/unknown
     "aether"            # P2P forum software
+    "tobi-try"          # Tool for directory name repitition
+    "impala"            # Terminal UI framework
 )
 
 # Check if running as root
