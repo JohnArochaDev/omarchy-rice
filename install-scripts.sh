@@ -46,10 +46,17 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-echo "Step 4: Removing desktop app bloatware..."
+echo "Step 4: Adding fastfetch..."
 bash "$SCRIPTS_FOLDER/add-fastfetch.sh"
 if [ $? -ne 0 ]; then
     echo "✗ Fastfetch addition script failed!"
+    exit 1
+fi
+
+echo "Step 4: Configuring terminal..."
+bash "$SCRIPTS_FOLDER/edit-fastfetch.sh"
+if [ $? -ne 0 ]; then
+    echo "✗ Fastfetch configuration script failed!"
     exit 1
 fi
 
