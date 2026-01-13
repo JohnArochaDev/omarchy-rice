@@ -14,7 +14,9 @@ PACKAGES_TO_REMOVE=(
     "bat"           # Better cat with syntax highlighting
     "eza"           # Better ls with colors/icons
     "fd"            # Better find command
+    "elephant-files"  # Depends on fd
     "ripgrep"       # Better grep for searching
+    "opencode"      # Depends on ripgrep
     "fzf"           # Fuzzy finder for interactive search
     "zoxide"        # Smart cd command
     
@@ -38,16 +40,16 @@ PACKAGES_TO_REMOVE=(
     "fcitx5-gtk"
     "fcitx5-qt"
     
-    # Printing stack (never print)
-    "cups"
-    "cups-browsed"
-    "cups-filters"
-    "cups-pdf"
-    "system-config-printer"
+    # Printing stack (never print) - remove in correct order
+    "system-config-printer"  # GUI config tool
+    "cups-pdf"               # PDF printer (requires cups)
+    "cups-browsed"           # Network printer discovery (optional for cups)
+    "cups-filters"           # Required by cups
+    "cups"                   # Main print system
     
     # Misc/unknown
     "aether"            # P2P forum software
-    "tobi-try"          # Tool for directory name repitition
+    "tobi-try"          # Tool fixed repetitive directories
     "impala"            # Terminal UI framework
 )
 
