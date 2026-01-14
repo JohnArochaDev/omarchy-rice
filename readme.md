@@ -92,6 +92,12 @@ MIT License - Feel free to use and modify
 
 Created for my personal Omarchy setup
 
+## Roadmap
+
+* Make more changes to fastfetch config
+* Create more themes
+* Create a custom hotbar configuration
+
 ---
 
 **Note:** Always review scripts before running them on your system. This script modifies system configurations and removes packages.
