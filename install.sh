@@ -82,9 +82,16 @@ if [ $? -ne 0 ]; then
 fi
 
 echo "Step 9: Installing window configurations..."
-bash "$SCRIPTS_FOLDER/configure-app-windows.sh
+bash "$SCRIPTS_FOLDER/configure-app-windows.sh"
 if [ $? -ne 0 ]; then
     echo "✗ Failed to configure windows"
+    exit 1
+fi
+
+echo "Step 10: Applying window configurations..."
+bash "$SCRIPTS_FOLDER/apply-configured-apps.sh"
+if [ $? -ne 0 ]; then
+    echo "✗ Failed to appply configured windows"
     exit 1
 fi
 

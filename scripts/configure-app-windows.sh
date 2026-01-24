@@ -8,6 +8,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GODOT_SRC="$SCRIPT_DIR/../files/godot.conf"
 ASEPRITE_SRC="$SCRIPT_DIR/../files/aseprite.conf"
 STEAM_SRC="$SCRIPT_DIR/../files/steam.conf"
+BLENDER_SRC="$SCRIPT_DIR/../files/steam.conf"
 
 # Destination directory
 DEST_DIR="$HOME/.local/share/omarchy/default/hypr/apps"
@@ -19,5 +20,6 @@ mkdir -p "$DEST_DIR"
 cp -f "$GODOT_SRC" "$DEST_DIR/godot.conf"
 cp -f "$ASEPRITE_SRC" "$DEST_DIR/aseprite.conf"
 cp -f "$STEAM_SRC" "$DEST_DIR/steam.conf"
+cp -f "$BLENDER_SRC" "$DEST_DIR/blender.conf"
 
 echo "Configuration files copied to $DEST_DIR"
